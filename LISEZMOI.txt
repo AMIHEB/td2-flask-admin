@@ -1,0 +1,8 @@
+TD2 - Flask-Admin
+
+1) pip install -r requirements.txt
+2) python app.py
+3) Ouvrir http://127.0.0.1:5000/admin
+
+Comptes de test (table User) : admin / admin1 / admin2 / admin3  -  mot de passe : 123456
+La base database.db est créée automatiquement au premier lancement.

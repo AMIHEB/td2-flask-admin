@@ -1,0 +1,32 @@
+{% extends 'admin/master.html' %}
+{% block body %}
+<style>
+  .kpi { border-radius: 6px; color: #fff; padding: 22px; margin-bottom: 20px; }
+  .kpi h2 { margin: 0; font-size: 38px; font-weight: 700; }
+  .kpi span { text-transform: uppercase; font-size: 12px; letter-spacing: 1px; opacity: .9; }
+  .k1 { background: #2c3e50; } .k2 { background: #18bc9c; }
+  .k3 { background: #3498db; } .k4 { background: #e74c3c; }
+</style>
+<div class="container">
+  <div class="page-header"><h2>Tableau de bord <small>Gestion scolaire</small></h2></div>
+  <div class="row">
+    <div class="col-sm-3"><div class="kpi k1"><h2>{{ stats.etudiants }}</h2><span>Étudiants</span></div></div>
+    <div class="col-sm-3"><div class="kpi k2"><h2>{{ stats.classes }}</h2><span>Classes</span></div></div>
+    <div class="col-sm-3"><div class="kpi k3"><h2>{{ stats.matieres }}</h2><span>Matières</span></div></div>
+    <div class="col-sm-3"><div class="kpi k4"><h2>{{ stats.heures }}</h2><span>Heures d'absence</span></div></div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading"><strong>Dernières absences</strong></div>
+    <table class="table table-striped" style="margin:0">
+      <thead><tr><th>Date</th><th>Étudiant</th><th>Matière</th><th>Heures</th></tr></thead>
+      <tbody>
+      {% for a in dernieres %}
+        <tr><td>{{ a.date_a.strftime('%d/%m/%Y') }}</td><td>{{ a.etudiant_r }}</td><td>{{ a.matiere_r }}</td><td>{{ a.nha }}</td></tr>
+      {% else %}
+        <tr><td colspan="4" class="text-center text-muted">Aucune absence enregistrée</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
